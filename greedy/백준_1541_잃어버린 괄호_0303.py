@@ -10,4 +10,5 @@ for i in a:
 n= num[0]
 for m in range(1,len(num)):
     n -= num[m]
+
 print(n)
