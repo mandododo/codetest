@@ -9,3 +9,4 @@ if left == right:
     print('LUCKY')
 else:
     print('READY')
+    
