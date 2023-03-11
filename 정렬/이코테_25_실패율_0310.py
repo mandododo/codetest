@@ -1,23 +1,22 @@
 def solution(N, stages):
-    ls = []
-    answer = []
-    for i in range(1, N+1):
-        fail_stage = 0 # 실패한 스테이지
-        pass_stage = 0 # 통과한 스테이지
-        
-        for j in stages:
-                 
-            if i == j:
-                fail_stage += 1
+    k=len(stages)
+    s=[]
+    for i in range(1,N+1):
+        c=0
+        for j in range(len(stages)):
+            if stages[j] == i:
+                c += 1
+        if c == 0:
+            s.append(0)
+        else:
+            s.append(c/k)
+        k = k- c
 
-            if j >= i:
-                pass_stage += 1
+    a=sorted(s,reverse=True)
+    answer=[]
 
-        if pass_stage == 0:
-            ls.append([i, 0])
-        else :
-            ls.append([i, fail_stage / pass_stage])
-        ls.sort(key = lambda ls : ls[1], reverse=True)
-    for i in range(len(ls)):
-        answer.append(ls[i][0])
-    return answer 
+    for i in range(len(a)):
+        answer.append(s.index(a[i])+1)
+        s[s.index(a[i])]=2
+
+    return answer
